@@ -1,0 +1,18 @@
+<!-- templates/admin/csv_form.html -->
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="module">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Upload CSV" class="default" />
+        </form>
+    </div>
+{% endblock %}
+

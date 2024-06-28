@@ -1,0 +1,548 @@
+<!-- templates/admin/base.html -->
+<!DOCTYPE html>
+<html lang="en" class="perfect-scrollbar-off">
+<head>
+
+<style>.async-hide { opacity: 0 !important} </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="apple-touch-icon" sizes="76x76" href="https://black-dashboard-django.creative-tim.com/static/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="https://black-dashboard-django.creative-tim.com/static/assets/img/favicon.png">
+<link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-django">
+<meta name="keywords" content="creative tim, django, backend, html dashboard, html css dashboard, web dashboard, bootstrap 4 dashboard, bootstrap 4, css3 dashboard, bootstrap 4 admin, argon dashboard bootstrap 4 dashboard, frontend, responsive bootstrap 4 dashboard, black design, argon dashboard bootstrap 4 dashboard">
+<meta name="description" content="Argon Dashboard Django is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing.">
+<meta itemprop="name" content="Argon Dashboard Django by Creative Tim">
+<meta itemprop="description" content="Argon Dashboard Django is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing.">
+<meta itemprop="image" content="https://s3.amazonaws.com/creativetim_bucket/products/336/opt_adfree_django_thumbnail.jpg">
+<meta name="twitter:card" content="product">
+<meta name="twitter:site" content="@creativetim">
+<meta name="twitter:title" content="Argon Dashboard Django by Creative Tim">
+<meta name="twitter:description" content="Argon Dashboard PRO Django is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing.">
+<meta name="twitter:creator" content="@creativetim">
+<meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/336/opt_adfree_django_thumbnail.jpg">
+<meta property="fb:app_id" content="655968634437471">
+<meta property="og:title" content="Argon Dashboard Django by Creative Tim">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://argon-dashboard-django.creative-tim.com/login/">
+<meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/336/opt_adfree_django_thumbnail.jpg">
+<meta property="og:description" content="Argon Dashboard Django is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing.">
+<meta property="og:site_name" content="Creative Tim">
+
+
+<title>{% block title %}Admin Panel{% endblock %}</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link href="https://black-dashboard-django.creative-tim.com/static/assets/css/nucleo-icons.css" rel="stylesheet">
+<link href="https://black-dashboard-django.creative-tim.com/static/assets/css/black-dashboard.css" rel="stylesheet">
+<link href="https://black-dashboard-django.creative-tim.com/static/assets/demo/demo.css" rel="stylesheet">
+
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/57/5/intl/en_gb/common.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/57/5/intl/en_gb/util.js"></script>
+<meta http-equiv="origin-trial" content="A3dA86xx3SygInSznfsu98uiaY4VmGo/CaJTGvdsIU5xobyXgN1lb1smNdWPEoeyz54s3L60Kdxmc4VJmUrrIgoAAACVeyJvcmlnaW4iOiJodHRwczovL2N0LnBpbnRlcmVzdC5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZyIsImV4cGlyeSI6MTcyNTQwNzk5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+{% block extra_head %}{% endblock %}
+</head>
+
+<body class="">
+
+
+
+<div class="wrapper">
+ 
+<div class="sidebar">
+
+<div class="sidebar-wrapper">
+<div class="logo">
+<a target="_blank" href="https://www.creative-tim.com/product/black-dashboard-django" class="simple-text logo-mini">
+BD
+</a>
+<a target="_blank" href="https://www.creative-tim.com/product/black-dashboard-django" class="simple-text logo-normal">
+Black Django
+</a>
+</div>
+<ul class="nav">
+<li class=" active  ">
+<a href="file:///home/pi/django-admin/dashboard.html">
+<i class="tim-icons icon-chart-pie-36"></i>
+<p>Dashboard</p>
+</a>
+</li>
+<li class="">
+<a href="/ui-icons.html">
+<i class="tim-icons icon-atom"></i>
+<p>Icons</p>
+</a>
+</li>
+<li class="">
+<a href="/ui-maps.html">
+<i class="tim-icons icon-pin"></i>
+<p>Maps</p>
+</a>
+</li>
+<li class="">
+<a href="/ui-notifications.html">
+<i class="tim-icons icon-bell-55"></i>
+<p>Notifications</p>
+</a>
+</li>
+<li class="">
+<a href="file:///home/pi/django-admin/user.html">
+<i class="tim-icons icon-single-02"></i>
+<p>User Profile</p>
+</a>
+</li>
+<li class="">
+<a href="/ui-tables.html">
+<i class="tim-icons icon-puzzle-10"></i>
+<p>Table List</p>
+</a>
+</li>
+<li class="">
+<a href="/ui-typography.html">
+<i class="tim-icons icon-align-center"></i>
+<p>Typography</p>
+</a>
+</li>
+<li class="">
+<a href="/page-rtl-support.html">
+<i class="tim-icons icon-world"></i>
+<p>RTL Support</p>
+</a>
+</li>
+<li>
+<a href=http://127.0.0.1:8000/admin/logout"">
+<i class="tim-icons icon-user-run"></i>
+<p>Logout</p>
+</a>
+</li>
+
+</ul>
+</div>
+</div>
+
+<div class="main-panel">
+
+
+<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+<div class="container-fluid">
+<div class="navbar-wrapper">
+<div class="navbar-toggle d-inline">
+<button type="button" class="navbar-toggler">
+<span class="navbar-toggler-bar bar1"></span>
+<span class="navbar-toggler-bar bar2"></span>
+<span class="navbar-toggler-bar bar3"></span>
+</button>
+</div>
+<a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+</div>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-bar navbar-kebab"></span>
+<span class="navbar-toggler-bar navbar-kebab"></span>
+<span class="navbar-toggler-bar navbar-kebab"></span>
+</button>
+<div class="collapse navbar-collapse" id="navigation">
+<ul class="navbar-nav ml-auto">
+<li class="search-bar input-group">
+<button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
+<span class="d-lg-none d-md-block">Search</span>
+</button>
+</li>
+<li class="dropdown nav-item">
+<a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
+<div class="notification d-none d-lg-block d-xl-block"></div>
+<i class="tim-icons icon-sound-wave"></i>
+<p class="d-lg-none">
+Notifications
+</p>
+</a>
+<ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+<li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
+<li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
+<li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
+<li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
+<li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
+</ul>
+</li>
+<li class="dropdown nav-item">
+<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+<div class="photo">
+<img src="https://black-dashboard-django.creative-tim.com/static/assets/img/anime3.png" alt="Profile Photo">
+</div>
+<b class="caret d-none d-lg-block d-xl-block"></b>
+<p class="d-lg-none">
+Log out
+</p>
+</a>
+<ul class="dropdown-menu dropdown-navbar">
+<li class="nav-link"><a href="file:///home/pi/django-admin/user.html" class="nav-item dropdown-item">Profile</a></li>
+<li class="dropdown-divider"></li>
+<li class="nav-link"><a href="/logout/" class="nav-item dropdown-item">Log out</a></li>
+</ul>
+</li>
+<li class="separator d-lg-none"></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<i class="tim-icons icon-simple-remove"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="content">
+  {% block content %}
+
+{% endblock %}
+</div>
+
+<footer class="footer">
+<div class="container-fluid">
+<ul class="nav">
+<li class="nav-item">
+<a target="_blank" href="https://www.creative-tim.com/product/black-dashboard-django" class="nav-link">
+Black Dashboard Django
+</a>
+</li>
+</ul>
+<div class="copyright">
+© <a target="_blank" href="https://www.creative-tim.com/">Creative-Tim</a>
+- coded by <a target="_blank" href="https://appseed.us?ref=ct-demo">AppSeed</a>.
+</div>
+</div>
+</footer>
+
+</div>
+</div>
+
+
+<div class="fixed-plugin">
+<div class="dropdown show-dropdown">
+<a href="#" data-toggle="dropdown">
+<i class="fa fa-cog fa-2x"> </i>
+</a>
+<ul class="dropdown-menu">
+<li class="header-title"> Sidebar Background</li>
+<li class="adjustments-line">
+<a href="javascript:void(0)" class="switch-trigger background-color">
+<div class="badge-colors text-center">
+<span class="badge filter badge-primary active" data-color="primary"></span>
+<span class="badge filter badge-info" data-color="blue"></span>
+<span class="badge filter badge-success" data-color="green"></span>
+</div>
+<div class="clearfix"></div>
+</a>
+</li>
+<li class="adjustments-line text-center color-change">
+<span class="color-label">LIGHT MODE</span>
+<span class="badge light-badge mr-2"></span>
+<span class="badge dark-badge ml-2"></span>
+<span class="color-label">DARK MODE</span>
+</li>
+<li class="button-container">
+<a href="https://www.creative-tim.com/product/black-dashboard-pro-django" target="_blank" class="btn btn-primary btn-block btn-round">Go PRO! Black PRO Django</a>
+<a href="https://www.creative-tim.com/product/black-dashboard-django" target="_blank" class="btn btn-default btn-block btn-round">
+See Product
+</a>
+</li>
+<li class="header-title">
+© <a href="https://www.creative-tim.com" target="_blank">Creative-Tim</a> - <a href="https://appseed.us?ref=ct-demo" target="_blank">AppSeed</a>
+</li>
+<li> <br> <i li="">
+</i></li></ul><i li="">
+<br>
+</i></div><i li="">
+</i></div><i li="">
+
+
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/js/core/jquery.min.js"></script>
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/js/core/popper.min.js"></script>
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/js/core/bootstrap.min.js"></script>
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/js/plugins/chartjs.min.js"></script>
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/js/plugins/bootstrap-notify.js"></script>
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/js/black-dashboard.min.js"></script>
+<script src="https://black-dashboard-django.creative-tim.com/static/assets/demo/demo.js"></script>
+<script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+        $('.fixed-plugin a').click(function(event) {
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .background-color span').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data', new_color);
+          }
+
+          if ($main_panel.length != 0) {
+            $main_panel.attr('data', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data', new_color);
+          }
+        });
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+
+        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (white_color == true) {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').removeClass('white-content');
+            }, 900);
+            white_color = false;
+          } else {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').addClass('white-content');
+            }, 900);
+
+            white_color = true;
+          }
+
+
+        });
+
+        $('.light-badge').click(function() {
+          $('body').addClass('white-content');
+        });
+
+        $('.dark-badge').click(function() {
+          $('body').removeClass('white-content');
+        });
+      });
+    });
+  </script>
+
+<script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;89a6eb2519ebb5eb&quot;,&quot;version&quot;:&quot;2024.4.1&quot;,&quot;token&quot;:&quot;1b7cbb72744b40c580f8633c6b62637e&quot;}" crossorigin="anonymous"></script>
+
+
+</i>
+<style>
+  #ofBar {
+    background: #fff;
+    z-index: 999999999;
+    font-size: 16px;
+    color: #333;
+    padding: 16px 40px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 40px;
+    width: 80%;
+    border-radius: 8px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,0.25), 0 8px 16px -8px rgba(0,0,0,0.3), 0 -6px 16px -6px rgba(0,0,0,0.025);
+  }
+
+  #ofBar-logo img {
+    height: 50px;
+  }
+
+  #ofBar-content {
+    display: inline;
+    padding: 0 15px;
+  }
+
+  #ofBar-right {
+    display: flex;
+    align-items: center;
+  }
+
+  #ofBar b {
+    font-size: 15px !important;
+  }
+  #count-down {
+    display: initial;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #close-bar {
+    font-size: 17px;
+    opacity: 0.5;
+    cursor: pointer;
+    color: #808080;
+    font-weight: bold;
+  }
+  #close-bar:hover{
+    opacity: 1;
+  }
+  #btn-bar {
+    background-image: linear-gradient(310deg, #141727 0%, #3A416F 100%);
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    opacity: .95;
+    margin-right: 20px;
+    box-shadow: 0 5px 10px -3px rgba(0,0,0,.23), 0 6px 10px -5px rgba(0,0,0,.25);
+  }
+   #btn-bar, #btn-bar:hover, #btn-bar:focus, #btn-bar:active {
+     text-decoration: none !important;
+     color: #fff !important;
+ }
+  #btn-bar:hover{
+    opacity: 1;
+  }
+
+  #btn-bar span, #ofBar-content span {
+    color: red;
+    font-weight: 700;
+  }
+
+  #oldPriceBar {
+    text-decoration: line-through;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    top: 2px;
+    position: relative;
+  }
+  #newPrice{
+    color: #fff;
+    font-size: 19px;
+    font-weight: 700;
+    top: 2px;
+    position: relative;
+    margin-left: 7px;
+  }
+
+  #fromText {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 400;
+    margin-right: 3px;
+    top: 0px;
+    position: relative;
+  }
+  
+  #pls-contact-me-on-email {
+    position: absolute;
+    color: white;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 999;
+    cursor: pointer;
+    padding-top: 100px;
+    padding-left: 50px;
+  }
+
+  @media(max-width: 991px){
+
+  }
+  @media (max-width: 768px) {
+    #count-down {
+      display: block;
+      margin-top: 15px;
+    }
+
+    #ofBar {
+      flex-direction: column;
+      align-items: normal;
+    }
+
+    #ofBar-content {
+      margin: 15px 0;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    #ofBar-right {
+      justify-content: flex-end;
+    }
+  }
+</style>
+{% block extra_scripts %}{% endblock %}
+	</body>
+  </html>
