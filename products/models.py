@@ -1,7 +1,8 @@
-# productss/models.py
+# products/models.py
+
 from django.db import models
 from django.urls import reverse
-
+from django.utils import timezone
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -16,6 +17,9 @@ class Product(models.Model):
     affiliate_link = models.URLField(max_length=200)
     image_url = models.URLField(blank=True, null=True)
     image_file = models.ImageField(upload_to='product_images/', blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+    sales = models.IntegerField(default=0)  # New field to track sales
 
     class Meta:
         abstract = True
@@ -37,8 +41,6 @@ class Ebook(Product):
     language = models.CharField(max_length=100, default='Unknown Language')
     length = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
 
-
-
 class Laptop(Product):
     brand = models.CharField(max_length=100)
     processor = models.CharField(max_length=100)
@@ -47,3 +49,4 @@ class Laptop(Product):
 class Gadget(Product):
     brand = models.CharField(max_length=100)
     features = models.TextField()
+

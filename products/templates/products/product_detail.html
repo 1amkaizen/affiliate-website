@@ -1,137 +1,509 @@
-{% extends 'products/base.html' %}
-
-{% load custom_filters %}
-
-{% block title %}{{ product.name }}{% endblock %}
-
-{% block content %}
-<!-- content -->
-<section class="py-5">
-  <div class="container">
-    <div class="row gx-5">
-      <aside class="col-lg-6">
-        <div class="border rounded-4 mb-3 d-flex justify-content-center">
-          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{ product.image_url }}">
-            <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{ product.image_url }}" />
-          </a>
-        </div>
-      </aside>
-      <main class="col-lg-6">
-        <div class="ps-lg-3">
-          <h3 class="title text-dark fw-bold">{{ product.name }}</h3>
-          <span class="text-muted"><i class="fas fa-user fa-sm mx-1"></i>{{ product.author }}</span>
-        </div>
-        <br>
-        <div class="mb-3">
-          <span class="h4"><i class="fas fa-tag fa-sm mx-1"></i>{{ product.price|format_rupiah }}</span>
-        </div>
-
-        <hr />
-        <h5 class="fw-bold mt-2 mb-2">Product Description:</h5>
-        <p id="description">{{ product.description|truncatewords:50|linebreaks }}</p>
-        <button id="readMoreBtn" class="btn btn-link p-0">Read More</button>
-        <button id="readLessBtn" class="btn btn-link p-0" style="display: none;">Read Less</button>
-        <div class="row mt-4">
-          {% if product.isbn %}
-            <dt class="col-6">ISBN:</dt>
-            <dd class="col-6">{{ product.isbn }}</dd>
-
-            <dt class="col-6">Pages:</dt>
-            <dd class="col-6">{{ product.pages }}</dd>
-
-            <dt class="col-6">Publisher:</dt>
-            <dd class="col-6">{{ product.publisher }}</dd>
-
-            <dt class="col-6">Publication Date:</dt>
-            <dd class="col-6">{{ product.publication_date }}</dd>
-
-            <dt class="col-6">Language:</dt>
-            <dd class="col-6">{{ product.language }}</dd>
-
-            <dt class="col-6">Weight:</dt>
-            <dd class="col-6">{{ product.weight }}kg</dd>
-
-            <dt class="col-6">Width:</dt>
-            <dd class="col-6">{{ product.width }}cm</dd>
-
-            <dt class="col-6">Length:</dt>
-            <dd class="col-6">{{ product.length }}cm</dd>
-          {% elif product.processor %}
-            <dt class="col-6">Brand:</dt>
-            <dd class="col-6">{{ product.brand }}</dd>
-
-            <dt class="col-6">Processor:</dt>
-            <dd class="col-6">{{ product.processor }}</dd>
-
-            <dt class="col-6">RAM:</dt>
-            <dd class="col-6">{{ product.ram }}</dd>
-          {% elif product.features %}
-            <dt class="col-6">Brand:</dt>
-            <dd class="col-6">{{ product.brand }}</dd>
-
-            <dt class="col-6">Features:</dt>
-            <dd class="col-6">{{ product.features }}</dd>
-          {% endif %}
-        </div>
-
-        <hr />
-
-        <a href="{{ product.affiliate_link }}" class="btn btn-primary shadow-0">Buy now</a>
-        <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3">
-          <i class="me-1 fa fa-heart fa-lg"></i> Save
-        </a>
-      </main>
+{% extends 'products/base.html' %} {% load custom_filters %} {% block title %} {{ product.name }}{% endblock %} {% block content %}
+<div class="row">
+  <!-- =====  BANNER STRAT  ===== -->
+  <div class="col-sm-12">
+    <div class="breadcrumb ptb_20">
+      <h1>{{ product.name|truncatechars:20 }}</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="category_page.html">Products</a></li>
+        <li class="active">{{ product.name|truncatechars:20 }}</li>
+      </ul>
     </div>
   </div>
-</section>
-<!-- content -->
+  <!-- =====  BREADCRUMB END===== -->
+  <div id="column-left" class="col-sm-4 col-lg-3 hidden-xs">
+    <div
+      id="category-menu"
+      class="navbar collapse in mb_40"
+      aria-expanded="true"
+      style=""
+      role="button">
+      <div class="nav-responsive">
+        <div class="heading-part">
+          <h2 class="main_title">Top category</h2>
+        </div>
+        <ul class="nav main-navigation collapse in">
+          {% for category in categories %}
+          <li>
+            <a href="{% url 'product_list_by_category' category.id %}"
+              >{{ category.name }}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="left_banner left-sidebar-widget mt_30 mb_40">
+      <a href="#"
+        ><img
+          src="https://html.lionode.com/darklook/images/left1.jpg"
+          alt="Left Banner"
+          class="img-responsive"
+      /></a>
+    </div>
+    <div class="left-special left-sidebar-widget mb_50">
+      <div class="heading-part mb_10">
+        <h2 class="main_title">Top Products</h2>
+      </div>
+      <div id="left-special" class="owl-carousel">
+        <ul class="row">
+          {% for top_product in top_products %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="{{ top_product.get_absolute_url  }}">
+                    <img
+                      class="img-responsive"
+                      title="{{ top_product.name  }}"
+                      alt="{{ top_product.name  }}"
+                      src="{{ top_product.image_url  }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ top_product.name  }}"
+                      alt="{{ top_product.name  }}"
+                      src="{{ top_product.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ top_product.name }}</h6>
+                
+								<span class="price"
+                  ><span class="amount"
+                    >{{ top_product.price|format_rupiah }}</span
+                  >
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <ul class="row">
+          {% for top_product in top_products %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="{{ top_product.get_absolute_url  }}">
+                    <img
+                      class="img-responsive"
+                      title="{{ top_product.name  }}"
+                      alt="{{ top_product.name  }}"
+                      src="{{ top_product.image_url  }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ top_product.name  }}"
+                      alt="{{ top_product.name  }}"
+                      src="{{ top_product.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ top_product.name }}</h6>
+                                <span class="price"
+                  ><span class="amount"
+                    >{{ top_product.price|format_rupiah }}</span
+                  >
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <ul class="row">
+          {% for related_product in related_products %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="{{ related_product.get_absolute_url  }}">
+                    <img
+                      class="img-responsive"
+                      title="{{ related_product.name  }}"
+                      alt="{{ related_product.name  }}"
+                      src="{{ related_product.image_url  }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ related_product.name  }}"
+                      alt="{{ related_product.name  }}"
+                      src="{{ related_product.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ related_product.name }}</h6>
+                               <span class="price"
+                  ><span class="amount"
+                    >{{ related_product.price|format_rupiah }}</span
+                  >
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
 
-<section class="bg-light border-top py-4">
-  <div class="container">
-    <div class="row gx-4">
-      <div class="col-lg-8 mb-4">
-        <div class="border rounded-2 px-3 py-2 bg-white">
-          <!-- Additional content can go here -->
+        <ul class="row">
+          {% for latest_product in latest_products %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="{{ latest_product.get_absolute_url  }}">
+                    <img
+                      class="img-responsive"
+                      title="{{ latest_product.name  }}"
+                      alt="{{ latest_product.name  }}"
+                      src="{{ latest_product.image_url  }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ latest_product.name  }}"
+                      alt="{{ latest_product.name  }}"
+                      src="{{ latest_product.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ latest_product.name }}</h6>
+                                <span class="price"
+                  ><span class="amount"
+                    >{{ latest_product.price|format_rupiah }}</span
+                  >
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8 col-lg-9 mtb_20">
+    <div class="row mt_10">
+      <div class="col-md-6">
+        <div>
+          <a class="thumbnails" href="{{ product.affiliate_link }}"
+            ><img
+              data-name="product_image"
+              src="{{ product.image_url }}"
+              alt=""
+          /></a>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="px-0 border rounded-2 shadow-0">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Similar items</h5>
-                              <div class="d-flex mb-3">
-                  <a href="asd" class="me-3">
-                    <img src="asd" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
-                  </a>
-                  <div class="info">
-                    <a href="adf" class="nav-link mb-1">
-                     asdf<br />
-                      asdf                    </a>
-                    <strong class="text-dark">sdf</strong>
+      <div class="col-md-6 prodetail caption product-thumb">
+        <h4 data-name="product_name" class="product-name">
+          {{ product.name }}
+        </h4>
+        <span> {{ product.author }}</span>
+        <div class="rating">
+          <span class="fa fa-stack"
+            ><i class="fa fa-star-o fa-stack-1x"></i
+            ><i class="fa fa-star fa-stack-1x"></i
+          ></span>
+          <span class="fa fa-stack"
+            ><i class="fa fa-star-o fa-stack-1x"></i
+            ><i class="fa fa-star fa-stack-1x"></i
+          ></span>
+          <span class="fa fa-stack"
+            ><i class="fa fa-star-o fa-stack-1x"></i
+            ><i class="fa fa-star fa-stack-1x"></i
+          ></span>
+          <span class="fa fa-stack"
+            ><i class="fa fa-star-o fa-stack-1x"></i
+            ><i class="fa fa-star fa-stack-1x"></i
+          ></span>
+          <span class="fa fa-stack"
+            ><i class="fa fa-star-o fa-stack-1x"></i
+            ><i class="fa fa-star fa-stack-1x"></i
+          ></span>
+        </div>
+        <span class="price mb_20"
+          ><span class="amount">{{ product.price|format_rupiah }}</span>
+        </span>
+        <hr />
+        <ul class="list-unstyled product_info mtb_20">
+          {% if product.isbn %}
+          <li>
+            <label>ISBN:</label>
+            <span> {{ product.isbn }}</span>
+          </li>
+          <li>
+            <label>Pages:</label>
+            <span> {{ product.pages }}</span>
+          </li>
+          <li>
+            <label>Publisher:</label>
+            <span> {{ product.publisher }}</span>
+          </li>
+          <li>
+            <label>Publication Date:</label>
+            <span> {{ product.publication_date }}</span>
+          </li>
+          <li>
+            <label>Language:</label>
+            <span> {{ product.language }}</span>
+          </li>
+          <li>
+            <label>Weight:</label>
+            <span> {{ product.weight }} kg</span>
+          </li>
+          <li>
+            <label>Width:</label>
+            <span> {{ product.width }} cm</span>
+          </li>
+          <li>
+            <label>Length:</label>
+            <span> {{ product.length }} cm</span>
+          </li>
+          {% elif product.processor %}
+          <li>
+            <label>Brand:</label>
+            <span> {{ product.brand }}</span>
+          </li>
+          <li>
+            <label>Processor:</label>
+            <span> {{ product.processor }}</span>
+          </li>
+          <li>
+            <label>RAM:</label>
+            <span> {{ product.ram }}</span>
+          </li>
+          {% elif product.features %}
+          <li>
+            <label>Brand:</label>
+            <span> {{ product.brand }}</span>
+          </li>
+          <li>
+            <label>Features:</label>
+            <span> {{ product.features }}</span>
+          </li>
+          {% endif %}
+        </ul>
+        <hr />
+        <p id="description" style="white-space: pre-line">
+          {{ product.description|safe|truncatewords_html:30 }}
+        </p>
+        <button id="readMoreBtn" class="btn btn-link p-0">Read More</button>
+        <button id="readLessBtn" class="btn btn-link p-0" style="display: none">
+          Read Less
+        </button>
+
+        <script>
+          var fullDescription = `{{ product.description|safe }}`;
+
+          document
+            .getElementById("readMoreBtn")
+            .addEventListener("click", function () {
+              var desc = document.getElementById("description");
+              desc.innerHTML = fullDescription;
+              this.style.display = "none";
+              document.getElementById("readLessBtn").style.display = "inline";
+            });
+
+          document
+            .getElementById("readLessBtn")
+            .addEventListener("click", function () {
+              var desc = document.getElementById("description");
+              desc.innerHTML = `{{ product.description|safe|truncatewords_html:30|linebreaks }}`;
+              this.style.display = "none";
+              document.getElementById("readMoreBtn").style.display = "inline";
+            });
+        </script>
+        <div id="product">
+          <div class="button-group mt_30">
+            <div class="add-to-cart">
+              <a href="#"><span>Add to cart</span></a>
+            </div>
+            <div class="wishlist">
+              <a href="#"><span>wishlist</span></a>
+            </div>
+            <div class="compare">
+              <a href="#"><span>Compare</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="exTab5" class="mtb_30">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#1c" data-toggle="tab">Overview</a></li>
+            <li><a href="#2c" data-toggle="tab">Reviews (1)</a></li>
+            <li><a href="#3c" data-toggle="tab">Solution</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active pt_20" id="1c">
+              <p>
+                CLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                lobortis malesuada mi id tristique. Sed ipsum nisi, dapibus at
+                faucibus non, dictum a diam. Nunc vitae interdum diam. Sed
+                finibus, justo vel maximus facilisis, sapien turpis euismod
+                tellus, vulputate semper diam ipsum vel tellus.
+              </p>
+            </div>
+            <div class="tab-pane" id="2c">
+              <form class="form-horizontal">
+                <div id="review"></div>
+                <h4 class="mt_20 mb_30">Write a review</h4>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-name"
+                      >Your Name</label
+                    >
+                    <input
+                      name="name"
+                      value=""
+                      id="input-name"
+                      class="form-control"
+                      type="text" />
                   </div>
                 </div>
-                         </div>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-review"
+                      >Your Review</label
+                    >
+                    <textarea
+                      name="text"
+                      rows="5"
+                      id="input-review"
+                      class="form-control"></textarea>
+                    <div class="help-block">
+                      <span class="text-danger">Note:</span> HTML is not
+                      translated!
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group required">
+                  <div class="col-md-6">
+                    <label class="control-label">Rating</label>
+                    <div class="rates">
+                      <span>Bad</span>
+                      <input name="rating" value="1" type="radio" />
+                      <input name="rating" value="2" type="radio" />
+                      <input name="rating" value="3" type="radio" />
+                      <input name="rating" value="4" type="radio" />
+                      <input name="rating" value="5" type="radio" />
+                      <span>Good</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="buttons pull-right">
+                      <button type="submit" class="btn btn-md btn-link">
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane pt_20" id="3c">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                lobortis malesuada mi id tristique. Sed ipsum nisi, dapibus at
+                faucibus non, dictum a diam. Nunc vitae interdum diam. Sed
+                finibus, justo vel maximus facilisis, sapien turpis euismod
+                tellus, vulputate semper diam ipsum vel tellus.applied clearfix
+                to the tab-content to rid of the gap between the tab and the
+                content
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading-part text-center mb_10">
+          <h2 class="main_title mt_50">Related Products</h2>
+        </div>
+        <div class="related_pro box">
+          <div
+            class="product-layout product-grid related-pro owl-carousel mb_50">
+            {% for related_product in related_products %}
+            <div class="item">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="{{ related_product.get_absolute_url  }}">
+                    <img
+                      data-name="product_image"
+                      src="{{ related_product.image_url }}"
+                      alt="{{ related_product.name  }}"
+                      title="{{ related_product.name  }}"
+                      class="img-responsive" />
+                    <img
+                      src="{{ related_product.image_url }}"
+                      alt="{{ related_product.name  }}"
+                      title="{{ related_product.name  }}"
+                      class="img-responsive" />
+                  </a>
+                  <div class="button-group text-center">
+                    <div class="wishlist">
+                      <a href="#"><span>wishlist</span></a>
+                    </div>
+                    <div class="quickview">
+                      <a href="#"><span>Quick View</span></a>
+                    </div>
+                    <div class="compare">
+                      <a href="#"><span>Compare</span></a>
+                    </div>
+                    <div class="add-to-cart">
+                      <a href="#"><span>Add to cart</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="caption product-detail text-center">
+                  <h6 data-name="product_name" class="product-name mt_20">
+                    {{ related_product.name }}
+                  </h6>
+                  <div class="rating">
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                  </div>
+                  <span class="price"
+                    ><span class="amount"
+                      >{{related_product.price|format_rupiah }}</span
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<script>
-  document.getElementById('readMoreBtn').addEventListener('click', function() {
-    var desc = document.getElementById('description');
-    desc.innerHTML = `{{ product.description|linebreaks|escapejs }}`;
-    this.style.display = 'none';
-    document.getElementById('readLessBtn').style.display = 'inline';
-  });
-
-  document.getElementById('readLessBtn').addEventListener('click', function() {
-    var desc = document.getElementById('description');
-    desc.innerHTML = `{{ product.description|truncatewords:50|linebreaks|escapejs }}`;
-    this.style.display = 'none';
-    document.getElementById('readMoreBtn').style.display = 'inline';
-  });
-</script>
+</div>
 {% endblock %}
 

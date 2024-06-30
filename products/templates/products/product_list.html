@@ -1,329 +1,401 @@
-{% extends 'products/base.html' %}
-{% load custom_filters %}
-{% block title %}ProAffiliate{% endblock %}
-
-{% block content %}
- <!-- Jumbotron -->
-  <div class="bg-primary text-white py-5">
-    <div class="container py-5">
-      <h1>
-        Temukan Produk Favorit Anda <br />
-        dengan Harga Terbaik!
-      </h1>
-      <p>
-      Akses penawaran spesial dan produk pilihan hanya dengan satu klik. Mulai berbelanja sekarang!
-			</p>
-      <button type="button" class="btn btn-outline-light">
-        Learn more
+{% extends 'products/base.html' %} {% load custom_filters %} {% block title%}DarkLook{% endblock %} {% block search %}
+<form method="get" action="{% url 'product_list' %}">
+  <div class="main-search mt_40">
+    <input
+      id="search-input"
+      name="q"
+      value="{{ query|default_if_none:'' }}"
+      placeholder="Search"
+      class="form-control input-lg"
+      autocomplete="off"
+      type="text" />
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-default btn-lg">
+        <i class="fa fa-search"></i>
       </button>
-      <button type="button" class="btn btn-light shadow-0 text-primary pt-2 border border-white">
-        <span class="pt-1">Purchase now</span>
-      </button>
-    </div>
+    </span>
   </div>
-  <!-- Jumbotron -->
-<!-- category -->
-<section>
-  <div class="container pt-5">
-    <nav class="row gy-4">
-      <div class="col-lg-6 col-md-12">
-        <div class="row">
-          <div class="col-3">
-            <a href="http://127.0.0.1:8000/category/1" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" >
-                <i class="fas fa-book fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Ebook</div>
-            </a>
-          </div>
-
-
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" >
-                <i class="fas fa-basketball-ball fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Sport and travel</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-ring fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Jewellery</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-clock fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Accessories</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="row">
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-car-side fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Automobiles</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-home fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Home items</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-guitar fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Musical items</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-book fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Book, reading</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="row">
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-baby-carriage fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Kid's toys</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-paw fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Pet items</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-tshirt fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Men's clothing</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-shoe-prints fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Men's clothing</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="row">
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-mobile fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Smartphones</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-tools fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Tools</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-pencil-ruler fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Education</div>
-            </a>
-          </div>
-          <div class="col-3">
-            <a href="#" class="text-center d-flex flex-column justify-content-center text-decoration-none">
-              <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2" data-mdb-ripple-color="dark">
-                <i class="fas fa-warehouse fa-xl fa-fw"></i>
-              </button>
-              <div class="text-dark fw-bold">Other items</div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-</section>
-<!-- category -->
-
-
-<section>
-  <div class="container my-5">    
-<header class="mb-4">
-      <h3>New products</h3>
-    </header>
-    
+</form>
+{% endblock %} {% block content %}
 <div class="row">
-				{% for product in products %}
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card my-2 shadow-0">
-          <a href=" {{ product.get_absolute_url }}" class="">
-            <div class="mask" style="height: 50px;">
-                          </div>
-            <img src="{{ product.image_url }}" alt="{{ product.name }} " class="card-img-top rounded-2" style="aspect-ratio: 1 / 1"/>
-          </a>
-          <div class="card-body p-0 pt-3">
-            <a href="#!" class="btn btn-light border px-2 pt-2 float-end icon-hover"><i class="fas fa-heart fa-lg px-1 text-secondary"></i></a>
-            <h5 class="card-title">{{ product.price|format_rupiah }} </h5>
-            <p class="card-text mb-0 fw-bold">{{ product.name }} </p>
-            <p class="text-muted">
-            {{ product.author }} 
-						</p>
-          </div>
-        </div>
-      </div>
-{% endfor %}
-
-</section>
-
- <!-- Pagination -->
-  <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            {% if products.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ products.previous_page_number }}{% if query %}&q={{ query }}{% endif %}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            {% endif %}
-
-            {% if products.number > 3 %}
-                <li class="page-item"><a class="page-link" href="?page=1{% if query %}&q={{ query }}{% endif %}">1</a></li>
-                {% if products.number > 4 %}
-                    <li class="page-item disabled"><a class="page-link">...</a></li>
-                {% endif %}
-            {% endif %}
-
-            {% for i in products.paginator.page_range %}
-                {% if i >= products.number|add:'-2' and i <= products.number|add:'2' %}
-                    {% if products.number == i %}
-                        <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
-                    {% else %}
-                        <li class="page-item"><a class="page-link" href="?page={{ i }}{% if query %}&q={{ query }}{% endif %}">{{ i }}</a></li>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-
-            {% if products.number < products.paginator.num_pages|add:'-2' %}
-                {% if products.number < products.paginator.num_pages|add:'-3' %}
-                    <li class="page-item disabled"><a class="page-link">...</a></li>
-                {% endif %}
-                <li class="page-item"><a class="page-link" href="?page={{ products.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">{{ products.paginator.num_pages }}</a></li>
-            {% endif %}
-
-            {% if products.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ products.next_page_number }}{% if query %}&q={{ query }}{% endif %}" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav> 
-
- <!-- Feature -->
-<section class="">
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-lg-6">
-        <div class="card-banner bg-gray h-100" style="
-                                                      min-height: 200px;
-                                                      background-size: cover;
-                                                      background-position: center;
-                                                      width: 100%;
-                                                      background-repeat: no-repeat;
-                                                      top: 50%;
-                                                      background-image: url('https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/banners/banner-item2.webp');">
-          <div class="p-3 p-lg-5" style="max-width: 70%;">
-            <h3 class="text-dark">Best products & brands in our store at 80% off</h3>
-            <p>That's true but not always</p>
-            <button class="btn btn-warning shadow-0" href="#"> Claim offer </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="row mb-3 mb-sm-4 g-3 g-sm-4">
-          <div class="col-6 d-flex">
-            <div class="card w-100 bg-primary" style="min-height: 200px;">
-              <div class="card-body">
-                <h5 class="text-white">Gaming toolset</h5>
-                <p class="text-white-50">Technology for cyber sport</p>
-                <a class="btn btn-outline-light btn-sm" href="#">Learn more</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 d-flex">
-            <div class="card w-100 bg-primary" style="min-height: 200px;">
-              <div class="card-body">
-                <h5 class="text-white">Quality sound</h5>
-                <p class="text-white-50">All you need for music</p>
-                <a class="btn btn-outline-light btn-sm" href="#">Learn more</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- row.// -->
-
-        <div class="card bg-success" style="min-height: 200px;">
-          <div class="card-body">
-            <h5 class="text-white">Buy 2 items, With special gift</h5>
-            <p class="text-white-50" style="max-width: 400px;">Buy one, get one free marketing strategy helps your business improves the brand by sharing the profits</p>
-            <a class="btn btn-outline-light btn-sm" href="#">Learn more</a>
-          </div>
-        </div>
-      </div>
-      <!-- col.// -->
+  <!-- =====  BANNER STRAT  ===== -->
+  <div class="col-sm-12">
+    <div class="breadcrumb ptb_20">
+      <h1>Products</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Products</li>
+      </ul>
     </div>
-    <!-- row.// -->
   </div>
-  <!-- container end.// -->
-</section>
-<!-- Feature -->
+  <!-- =====  BREADCRUMB END===== -->
+  <div id="column-left" class="col-sm-4 col-lg-3">
+    <div
+      id="category-menu"
+      class="navbar collapse in mb_40"
+      aria-expanded="true"
+      style=""
+      role="button">
+      <div class="nav-responsive">
+        <div class="heading-part">
+          <h2 class="main_title">Top category</h2>
+        </div>
+        <ul class="nav main-navigation collapse in">
+          {% for category in categories %}
+          <li>
+            <a href="{% url 'product_list_by_category' category.id %}"
+              >{{ category.name }}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="filter left-sidebar-widget mb_50">
+      <div class="heading-part mtb_20">
+        <h2 class="main_title">Refinr Search</h2>
+      </div>
+      <div class="filter-block">
+        <p>
+          <label for="amount">Price range:</label>
+          <input type="text" id="amount" readonly />
+        </p>
+        <div id="slider-range" class="mtb_20"></div>
+        <div class="list-group">
+          <div class="list-group-item mb_10">
+            <label>Category</label>
+            <div id="filter-group1">
+              {% for category in categories %}
+              <div class="checkbox">
+                <label>
+                  <input value="" type="checkbox" /> {{ category.name }}</label
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="list-group-item mb_10">
+            <label>Size</label>
+            <div id="filter-group3">
+              <div class="checkbox">
+                <label> <input value="" type="checkbox" /> Big (3)</label>
+              </div>
+              <div class="checkbox">
+                <label> <input value="" type="checkbox" /> Medium (2)</label>
+              </div>
+              <div class="checkbox">
+                <label> <input value="" type="checkbox" /> Small (1)</label>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn">Refine Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="left_banner left-sidebar-widget mb_50">
+      <a href="#"
+        ><img
+          src="https://html.lionode.com/darklook/images/left1.jpg"
+          alt="Left Banner"
+          class="img-responsive"
+      /></a>
+    </div>
+    <div class="left-special left-sidebar-widget mb_50">
+      <div class="heading-part mb_10">
+        <h2 class="main_title">Top Products</h2>
+      </div>
+      <div id="left-special" class="owl-carousel">
+        <ul class="row">
+          {% for ebook in top_products.ebooks %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="product_detail_page.html">
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ ebook.name }}</h6>
 
+                <span class="price"
+                  ><span class="amount">{{ ebook.price|format_rupiah }}</span>
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <ul class="row">
+          {% for ebook in related_products.ebooks %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="product_detail_page.html">
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ ebook.name }}</h6>
 
+                <span class="price"
+                  ><span class="amount">{{ ebook.price|format_rupiah }}</span>
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <ul class="row">
+          {% for ebook in latest_products.ebooks %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="product_detail_page.html">
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ ebook.name }}</h6>
 
-		{% endblock %}
+                <span class="price"
+                  ><span class="amount">{{ ebook.price|format_rupiah }}</span>
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <ul class="row">
+          {% for ebook in top_products.ebooks %}
+          <li class="item product-layout-left mb_20">
+            <div class="product-list col-xs-4">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="product_detail_page.html">
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url }}" />
+                    <img
+                      class="img-responsive"
+                      title="{{ ebook.name  }}"
+                      alt="{{ ebook.name  }}"
+                      src="{{ ebook.image_url  }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="caption product-detail">
+                <h6 class="product-name">{{ ebook.name }}</h6>
+
+                <span class="price"
+                  ><span class="amount">{{ ebook.price|format_rupiah }}</span>
+                </span>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8 col-lg-9 mtb_20">
+    <div class="category-page-wrapper mb_30">
+      <div class="list-grid-wrapper pull-left">
+        <div class="btn-group btn-list-grid">
+          <button
+            type="button"
+            id="grid-view"
+            class="btn btn-default grid-view active"></button>
+          <button
+            type="button"
+            id="list-view"
+            class="btn btn-default list-view"></button>
+        </div>
+      </div>
+      <div class="page-wrapper pull-right">
+        <label class="control-label" for="input-limit">Show :</label>
+        <div class="limit">
+          <select id="input-limit" class="form-control">
+            <option value="8" selected="selected">08</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+      </div>
+      <div class="sort-wrapper pull-right">
+        <label class="control-label" for="input-sort">Sort By :</label>
+        <div class="sort-inner">
+          <select id="input-sort" class="form-control">
+            <option value="ASC" selected="selected">Default</option>
+            <option value="ASC">Name (A - Z)</option>
+            <option value="DESC">Name (Z - A)</option>
+            <option value="ASC">Price (Low &gt; High)</option>
+            <option value="DESC">Price (High &gt; Low)</option>
+            <option value="DESC">Rating (Highest)</option>
+            <option value="ASC">Rating (Lowest)</option>
+            <option value="ASC">Model (A - Z)</option>
+            <option value="DESC">Model (Z - A)</option>
+          </select>
+        </div>
+        <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+      </div>
+    </div>
+    <div class="row">
+      {% for product in products %}
+      <div class="product-layout product-grid col-md-4 col-xs-6">
+        <div class="item">
+          <div class="product-thumb clearfix mb_30">
+            <div class="image product-imageblock">
+              <a href="{{ product.get_absolute_url }}">
+                <img
+                  data-name="product_image"
+                  src="{{ product.image_url }}"
+                  alt="{{ product.name  }}"
+                  title="{{ product.name  }}"
+                  class="img-responsive" />
+                <img
+                  src="{{ product.image_url }}"
+                  alt="{{ product.name  }}"
+                  title="{{ product.name  }}"
+                  class="img-responsive" />
+              </a>
+              <div class="button-group text-center">
+                <div class="wishlist">
+                  <a href="#"><span>wishlist</span></a>
+                </div>
+                <div class="quickview">
+                  <a href="#"><span>Quick View</span></a>
+                </div>
+                <div class="compare">
+                  <a href="#"><span>Compare</span></a>
+                </div>
+                <div class="add-to-cart">
+                  <a href="#"><span>Add to cart</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="caption product-detail text-center">				
+										<span class="amount">{{ product.author }}</span>
+              <h6 data-name="product_name" class="product-name mt_20">
+                {{ product.name }}
+              </h6>
+              <div class="rating">
+                <span class="fa fa-stack"
+                  ><i class="fa fa-star-o fa-stack-1x"></i
+                  ><i class="fa fa-star fa-stack-1x"></i
+                ></span>
+                <span class="fa fa-stack"
+                  ><i class="fa fa-star-o fa-stack-1x"></i
+                  ><i class="fa fa-star fa-stack-1x"></i
+                ></span>
+                <span class="fa fa-stack"
+                  ><i class="fa fa-star-o fa-stack-1x"></i
+                  ><i class="fa fa-star fa-stack-1x"></i
+                ></span>
+                <span class="fa fa-stack"
+                  ><i class="fa fa-star-o fa-stack-1x"></i
+                  ><i class="fa fa-star fa-stack-1x"></i
+                ></span>
+                <span class="fa fa-stack"
+                  ><i class="fa fa-star-o fa-stack-1x"></i
+                  ><i class="fa fa-star fa-stack-1x"></i
+                ></span>
+              </div>
+              <span class="price"
+                ><span class="amount">{{ product.price|format_rupiah }}</span>
+              </span>
+                          </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-nav text-center mt_50">
+      <ul>
+        {% if products.has_previous %}
+        <li>
+          <a href="?page=1"><i class="fa fa-angle-double-left"></i></a>
+        </li>
+        <li>
+          <a href="?page={{ products.previous_page_number }}"
+            ><i class="fa fa-angle-left"></i
+          ></a>
+        </li>
+        {% endif %} {% for num in products.paginator.page_range %} {% if products.number == num %}
+        <li class="active">
+          <span>{{ num }}</span>
+        </li>
+        {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
+        <li>
+          <a href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
+        <li>
+          <span>...</span>
+        </li>
+        {% endif %} {% endfor %} {% if products.has_next %}
+        <li>
+          <a href="?page={{ products.next_page_number }}"
+            ><i class="fa fa-angle-right"></i
+          ></a>
+        </li>
+        <li>
+          <a href="?page={{ products.paginator.num_pages }}"
+            ><i class="fa fa-angle-double-right"></i
+          ></a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
 

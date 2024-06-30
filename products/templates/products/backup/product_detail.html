@@ -1,0 +1,137 @@
+{% extends 'products/base.html' %}
+
+{% load custom_filters %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<!-- content -->
+<section class="py-5">
+  <div class="container">
+    <div class="row gx-5">
+      <aside class="col-lg-6">
+        <div class="border rounded-4 mb-3 d-flex justify-content-center">
+          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{ product.image_url }}">
+            <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{ product.image_url }}" />
+          </a>
+        </div>
+      </aside>
+      <main class="col-lg-6">
+        <div class="ps-lg-3">
+          <h3 class="title text-dark fw-bold">{{ product.name }}</h3>
+          <span class="text-muted"><i class="fas fa-user fa-sm mx-1"></i>{{ product.author }}</span>
+        </div>
+        <br>
+        <div class="mb-3">
+          <span class="h4"><i class="fas fa-tag fa-sm mx-1"></i>{{ product.price|format_rupiah }}</span>
+        </div>
+
+        <hr />
+        <h5 class="fw-bold mt-2 mb-2">Product Description:</h5>
+        <p id="description">{{ product.description|truncatewords:50|linebreaks }}</p>
+        <button id="readMoreBtn" class="btn btn-link p-0">Read More</button>
+        <button id="readLessBtn" class="btn btn-link p-0" style="display: none;">Read Less</button>
+        <div class="row mt-4">
+          {% if product.isbn %}
+            <dt class="col-6">ISBN:</dt>
+            <dd class="col-6">{{ product.isbn }}</dd>
+
+            <dt class="col-6">Pages:</dt>
+            <dd class="col-6">{{ product.pages }}</dd>
+
+            <dt class="col-6">Publisher:</dt>
+            <dd class="col-6">{{ product.publisher }}</dd>
+
+            <dt class="col-6">Publication Date:</dt>
+            <dd class="col-6">{{ product.publication_date }}</dd>
+
+            <dt class="col-6">Language:</dt>
+            <dd class="col-6">{{ product.language }}</dd>
+
+            <dt class="col-6">Weight:</dt>
+            <dd class="col-6">{{ product.weight }}kg</dd>
+
+            <dt class="col-6">Width:</dt>
+            <dd class="col-6">{{ product.width }}cm</dd>
+
+            <dt class="col-6">Length:</dt>
+            <dd class="col-6">{{ product.length }}cm</dd>
+          {% elif product.processor %}
+            <dt class="col-6">Brand:</dt>
+            <dd class="col-6">{{ product.brand }}</dd>
+
+            <dt class="col-6">Processor:</dt>
+            <dd class="col-6">{{ product.processor }}</dd>
+
+            <dt class="col-6">RAM:</dt>
+            <dd class="col-6">{{ product.ram }}</dd>
+          {% elif product.features %}
+            <dt class="col-6">Brand:</dt>
+            <dd class="col-6">{{ product.brand }}</dd>
+
+            <dt class="col-6">Features:</dt>
+            <dd class="col-6">{{ product.features }}</dd>
+          {% endif %}
+        </div>
+
+        <hr />
+
+        <a href="{{ product.affiliate_link }}" class="btn btn-primary shadow-0">Buy now</a>
+        <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3">
+          <i class="me-1 fa fa-heart fa-lg"></i> Save
+        </a>
+      </main>
+    </div>
+  </div>
+</section>
+<!-- content -->
+
+<section class="bg-light border-top py-4">
+  <div class="container">
+    <div class="row gx-4">
+      <div class="col-lg-8 mb-4">
+        <div class="border rounded-2 px-3 py-2 bg-white">
+          <!-- Additional content can go here -->
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="px-0 border rounded-2 shadow-0">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Similar items</h5>
+                              <div class="d-flex mb-3">
+                  <a href="asd" class="me-3">
+                    <img src="asd" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
+                  </a>
+                  <div class="info">
+                    <a href="adf" class="nav-link mb-1">
+                     asdf<br />
+                      asdf                    </a>
+                    <strong class="text-dark">sdf</strong>
+                  </div>
+                </div>
+                         </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('readMoreBtn').addEventListener('click', function() {
+    var desc = document.getElementById('description');
+    desc.innerHTML = `{{ product.description|linebreaks|escapejs }}`;
+    this.style.display = 'none';
+    document.getElementById('readLessBtn').style.display = 'inline';
+  });
+
+  document.getElementById('readLessBtn').addEventListener('click', function() {
+    var desc = document.getElementById('description');
+    desc.innerHTML = `{{ product.description|truncatewords:50|linebreaks|escapejs }}`;
+    this.style.display = 'none';
+    document.getElementById('readMoreBtn').style.display = 'inline';
+  });
+</script>
+{% endblock %}
+

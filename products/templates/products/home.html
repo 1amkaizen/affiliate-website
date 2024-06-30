@@ -1,0 +1,583 @@
+{% extends 'products/base.html' %} {% load custom_filters %}
+{% block title%}DarkLook{% endblock %} 
+<!-- =====  BANNER STRAT  ===== -->
+{% block banner %}
+<div class="banner">
+  <div class="main-banner owl-carousel">
+    <div class="item">
+      <a href="#"
+        ><img
+          src="https://html.lionode.com/darklook/images/main_banner1.jpg"
+          alt="Main Banner"
+          class="img-responsive"
+      /></a>
+    </div>
+    <div class="item">
+      <a href="#"
+        ><img
+          src="https://html.lionode.com/darklook/images/main_banner2.jpg"
+          alt="Main Banner"
+          class="img-responsive"
+      /></a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!-- =====  BANNER END  ===== -->
+
+{% block content %}
+
+<!-- =====  SUB BANNER  STRAT ===== -->
+<div class="row">
+  <div class="col-sm-3 mt_20 cms-icon">
+    <div class="feature-i-left ptb_30">
+      <div class="icon-right Shipping"></div>
+      <h6>Free Shipping</h6>
+      <p>Free dedlivery worldwide</p>
+    </div>
+  </div>
+  <div class="col-sm-3 mt_20 cms-icon">
+    <div class="feature-i-left ptb_30">
+      <div class="icon-right Order"></div>
+      <h6>Order Onlivne</h6>
+      <p>Hours : 8am - 11pm</p>
+    </div>
+  </div>
+  <div class="col-sm-3 mt_20 cms-icon">
+    <div class="feature-i-left ptb_30">
+      <div class="icon-right Save"></div>
+      <h6>Shop And Save</h6>
+      <p>For All Spices & Herbs</p>
+    </div>
+  </div>
+  <div class="col-sm-3 mt_20 cms-icon">
+    <div class="feature-i-left ptb_30">
+      <div class="icon-right Safe"></div>
+      <h6>Safe Shoping</h6>
+      <p>Ensure genuine 100%</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 mt_30">
+    <!-- =====  PRODUCT TAB  ===== -->
+    <div id="product-tab" class="mt_10">
+      <div class="heading-part mb_10">
+        <h2 class="main_title">Featured Products</h2>
+      </div>
+      <ul class="nav text-right">
+        <li class="active">
+          <a href="#nArrivals" data-toggle="tab">New Arrivals</a>
+        </li>
+        <li><a href="#Bestsellers" data-toggle="tab">Bestsellers</a></li>
+        <li><a href="#Featured" data-toggle="tab">Featured</a></li>
+      </ul>
+      <div class="tab-content clearfix box">
+        <!-- =====  TAB ARRIVALS  ===== -->
+        <div class="tab-pane active" id="nArrivals">
+          <div class="nArrivals owl-carousel">
+            {% for product in products %}
+
+            <div class="product-grid">
+              <div class="item">
+                <div class="product-thumb">
+                  <div class="image product-imageblock">
+                    <a href="{{ product.get_absolute_url }}">
+                      <img
+                        data-name="product_image"
+                        src="{{ product.image_url }}"
+                        alt="{{ product.name }}"
+                        title="{{ product.name }}"
+                        class="img-responsive" />
+                      <img
+                        src="{{ product.image_url }}"
+                        alt="{{ product.name }}"
+                        title="{{ product.name }}"
+                        class="img-responsive" />
+                    </a>
+                    <div class="button-group text-center">
+                      <div class="wishlist">
+                        <a href="#"><span>wishlist</span></a>
+                      </div>
+                      <div class="quickview">
+                        <a href="#"><span>Quick View</span></a>
+                      </div>
+                      <div class="compare">
+                        <a href="#"><span>Compare</span></a>
+                      </div>
+                      <div class="add-to-cart">
+                        <a href="#"><span>Add to cart</span></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="caption product-detail text-center">
+                    <div class="rating">
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                    </div>
+										<span class="text-warning">{{ product.author }}</span>
+                    <h6 data-name="product_name" class="product-name">
+                      {{ product.name }}     </h6>
+                    <span class="price"><span class="amount">{{ product.price|format_rupiah }}</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- =====  END TAB ARRIVALS  ===== -->
+
+        <!-- =====   TAB BESTSELLER  ===== -->
+        <div class="tab-pane" id="Bestsellers">
+          <div class="nArrivals owl-carousel">
+            {% for ebook in latest_products.ebooks %}
+
+            <div class="product-grid">
+              <div class="item">
+                <div class="product-thumb">
+                  <div class="image product-imageblock">
+													<a href="{{ ebook.get_absolute_url }}">
+                      <img
+                        data-name="product_image"
+                        src="{{ ebook.image_url }}"
+                        alt="{{ ebook.name }}"
+                        title="{{ ebook.name }}"
+                        class="img-responsive" />
+                      <img
+                        src="{{ ebook.image_url }}"
+                        alt="{{ ebook.name }}"
+                        title="{{ ebook.name }}"
+                        class="img-responsive" />
+                    </a>
+                    <div class="button-group text-center">
+                      <div class="wishlist">
+                        <a href="#"><span>wishlist</span></a>
+                      </div>
+                      <div class="quickview">
+                        <a href="#"><span>Quick View</span></a>
+                      </div>
+                      <div class="compare">
+                        <a href="#"><span>Compare</span></a>
+                      </div>
+                      <div class="add-to-cart">
+                        <a href="#"><span>Add to cart</span></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="caption product-detail text-center">
+                    <div class="rating">
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                    </div>
+                    <h6 data-name="product_name" class="product-name">
+<span class="text-warning">{{ ebook.author }}</span>
+
+                      {{ ebook.name }}
+                    </h6>
+                    <span class="price"
+                      ><span class="amount"
+                        >{{ ebook.price|format_rupiah }}</span
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- =====  END TAB BESTSELLER  ===== -->
+
+        <!-- =====   TAB FEATURED  ===== -->
+
+        <div class="tab-pane" id="Featured">
+          <div class="nArrivals owl-carousel">
+            {% for ebook in related_products.ebooks %}
+
+            <div class="product-grid">
+              <div class="item">
+                <div class="product-thumb">
+                  <div class="image product-imageblock">
+                    <a href="{{ ebook.get_absolute_url }}">
+                      <img
+                        data-name="product_image"
+                        src="{{ ebook.image_url }}"
+                        alt="{{ ebook.name }}"
+                        title="{{ ebook.name }}"
+                        class="img-responsive" />
+                      <img
+                        src="{{ ebook.image_url }}"
+                        alt="{{ ebook.name }}"
+                        title="{{ ebook.name }}"
+                        class="img-responsive" />
+                    </a>
+                    <div class="button-group text-center">
+                      <div class="wishlist">
+                        <a href="#"><span>wishlist</span></a>
+                      </div>
+                      <div class="quickview">
+                        <a href="#"><span>Quick View</span></a>
+                      </div>
+                      <div class="compare">
+                        <a href="#"><span>Compare</span></a>
+                      </div>
+                      <div class="add-to-cart">
+                        <a href="#"><span>Add to cart</span></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="caption product-detail text-center">
+                    <div class="rating">
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                      <span class="fa fa-stack"
+                        ><i class="fa fa-star-o fa-stack-1x"></i
+                        ><i class="fa fa-star fa-stack-1x"></i
+                      ></span>
+                    </div>
+                    <h6 data-name="product_name" class="product-name">
+<span class="text-warning">{{ ebook.author }}</span>
+
+                      {{ ebook.name }}                    </h6>
+                    <span class="price"
+                      ><span class="amount"
+                        >{{ ebook.price|format_rupiah }}</span
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- =====  END TAB FEATURED  ===== -->
+      </div>
+    </div>
+    <!-- =====  PRODUCT TAB  END ===== -->
+  </div>
+</div>
+<div class="row">
+  <div class="cms_banner">
+    <div class="col-xs-12 mt_60">
+      <div id="subbanner4" class="sub-hover">
+        <div class="sub-img">
+          <a href="#"
+            ><img
+              src="https://html.lionode.com/darklook/images/sub5.jpg"
+              alt="Sub Banner5"
+              class="img-responsive"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 mtb_10">
+    <!-- =====  PRODUCT TAB  ===== -->
+    <div class="mt_60">
+      <div class="heading-part mb_10">
+        <h2 class="main_title">Deals of the Week</h2>
+      </div>
+      <div class="latest_pro box">
+        <div class="latest owl-carousel">
+          {% for ebook in top_products.ebooks %}
+
+          <div class="product-grid">
+            <div class="item">
+              <div class="product-thumb">
+                <div class="image product-imageblock">
+                  <a href="{{ ebook.get_absolute_url }}">
+                    <img
+                      data-name="product_image"
+                      src="{{ ebook.image_url }}"
+                      alt="{{ ebook.name }}"
+                      title="{{ ebook.name }}"
+                      class="img-responsive" />
+                    <img
+                      src="{{ ebook.image_url }}"
+                      alt="{{ ebook.name }}"
+                      title="{{ ebook.name }}"
+                      class="img-responsive" />
+                  </a>
+                  <div class="button-group text-center">
+                    <div class="wishlist">
+                      <a href="#"><span>wishlist</span></a>
+                    </div>
+                    <div class="quickview">
+                      <a href="#"><span>Quick View</span></a>
+                    </div>
+                    <div class="compare">
+                      <a href="#"><span>Compare</span></a>
+                    </div>
+                    <div class="add-to-cart">
+                      <a href="#"><span>Add to cart</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="caption product-detail text-center">
+                  <div class="rating">
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                    <span class="fa fa-stack"
+                      ><i class="fa fa-star-o fa-stack-1x"></i
+                      ><i class="fa fa-star fa-stack-1x"></i
+                    ></span>
+                  </div>
+
+									<h6 data-name="product_name" class="product-name">
+
+													<span class="text-warning">{{ ebook.author }}</span>
+
+                      {{ ebook.name }}                    
+									</h6>
+                    
+									<span class="price">
+											<span class="amount">{{ ebook.price|format_rupiah }}</span>
+
+
+                                 </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 mtb_10">
+    <!-- =====  Blog ===== -->
+    <div id="Blog" class="mt_50">
+      <div class="heading-part mb_10">
+        <h2 class="main_title">Latest News</h2>
+      </div>
+      <div class="blog-contain box">
+        <div class="blog owl-carousel">
+          <div class="item">
+            <div class="box-holder">
+              <div class="thumb post-img">
+                <a href="#">
+                  <img
+                    src="https://html.lionode.com/darklook/images/blog/blog_img_01.jpg"
+                    alt="themini" />
+                </a>
+                <div class="date-time text-center">
+                  <div class="day">11</div>
+                  <div class="month">Aug</div>
+                </div>
+                <div class="post-image-hover"></div>
+                <div class="post-info">
+                  <h6 class="mb_10 text-uppercase">
+                    <a href="single_blog.html"
+                      >Fashions fade, style is eternal</a
+                    >
+                  </h6>
+                  <p>
+                    Aliquam egestas pellentesque est. Etiam a orci Nulla id enim
+                    feugiat ligula ullamcorper scelerisque. Morbi eu luctus
+                    nisl.
+                  </p>
+                  <div class="view-blog">
+                    <div class="write-comment pull-left">
+                      <a href="single_blog.html"> 0 Comments</a>
+                    </div>
+                    <div class="read-more pull-right">
+                      <a href="single_blog.html">
+                        <i class="fa fa-link"></i> read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="box-holder">
+              <div class="thumb post-img">
+                <a href="#">
+                  <img
+                    src="https://html.lionode.com/darklook/images/blog/blog_img_02.jpg"
+                    alt="themini" />
+                </a>
+                <div class="date-time text-center">
+                  <div class="day">11</div>
+                  <div class="month">Aug</div>
+                </div>
+                <div class="post-image-hover"></div>
+                <div class="post-info">
+                  <h6 class="mb_10 text-uppercase">
+                    <a href="single_blog.html"
+                      >Fashions fade, style is eternal</a
+                    >
+                  </h6>
+                  <p>
+                    Aliquam egestas pellentesque est. Etiam a orci Nulla id enim
+                    feugiat ligula ullamcorper scelerisque. Morbi eu luctus
+                    nisl.
+                  </p>
+                  <div class="view-blog">
+                    <div class="write-comment pull-left">
+                      <a href="single_blog.html"> 0 Comments</a>
+                    </div>
+                    <div class="read-more pull-right">
+                      <a href="single_blog.html">
+                        <i class="fa fa-link"></i> read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="box-holder">
+              <div class="thumb post-img">
+                <a href="#">
+                  <img
+                    src="https://html.lionode.com/darklook/images/blog/blog_img_03.jpg"
+                    alt="themini" />
+                </a>
+                <div class="date-time text-center">
+                  <div class="day">11</div>
+                  <div class="month">Aug</div>
+                </div>
+                <div class="post-image-hover"></div>
+                <div class="post-info">
+                  <h6 class="mb_10 text-uppercase">
+                    <a href="single_blog.html"
+                      >Fashions fade, style is eternal</a
+                    >
+                  </h6>
+                  <p>
+                    Aliquam egestas pellentesque est. Etiam a orci Nulla id enim
+                    feugiat ligula ullamcorper scelerisque. Morbi eu luctus
+                    nisl.
+                  </p>
+                  <div class="view-blog">
+                    <div class="write-comment pull-left">
+                      <a href="single_blog.html"> 0 Comments</a>
+                    </div>
+                    <div class="read-more pull-right">
+                      <a href="single_blog.html">
+                        <i class="fa fa-link"></i> read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="box-holder">
+              <div class="thumb post-img">
+                <a href="#">
+                  <img
+                    src="https://html.lionode.com/darklook/images/blog/blog_img_04.jpg"
+                    alt="themini" />
+                </a>
+                <div class="date-time text-center">
+                  <div class="day">11</div>
+                  <div class="month">Aug</div>
+                </div>
+                <div class="post-image-hover"></div>
+                <div class="post-info">
+                  <h6 class="mb_10 text-uppercase">
+                    <a href="single_blog.html"
+                      >Fashions fade, style is eternal</a
+                    >
+                  </h6>
+                  <p>
+                    Aliquam egestas pellentesque est. Etiam a orci Nulla id enim
+                    feugiat ligula ullamcorper scelerisque. Morbi eu luctus
+                    nisl.
+                  </p>
+                  <div class="view-blog">
+                    <div class="write-comment pull-left">
+                      <a href="single_blog.html"> 0 Comments</a>
+                    </div>
+                    <div class="read-more pull-right">
+                      <a href="single_blog.html">
+                        <i class="fa fa-link"></i> read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- =====  Blog end ===== -->
+    </div>
+  </div>
+</div>
+{% endblock %}
