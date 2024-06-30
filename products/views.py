@@ -1,6 +1,5 @@
 # products/views.py
 import random
-
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Ebook, Laptop, Gadget
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -8,23 +7,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def product_list(request, category_id=None):
     query = request.GET.get('q')
     categories = Category.objects.all()
-# Ambil produk teratas secara acak
-    top_products = {
-        'ebooks': list(Ebook.objects.order_by('?')[:3]),
-        'laptops': list(Laptop.objects.order_by('?')[:3]),
-        'gadgets': list(Gadget.objects.order_by('?')[:3]),
-    }
-    # Ambil produk terbaru secara acak
-    latest_products = {
-        'ebooks': list(Ebook.objects.order_by('?')[:3]),
-        'laptops': list(Laptop.objects.order_by('?')[:3]),
-        'gadgets': list(Gadget.objects.order_by('?')[:3]),
-    }
-    related_products = {
-        'ebooks': list(Ebook.objects.order_by('?')[:3]),
-        'laptops': list(Laptop.objects.order_by('?')[:3]),
-        'gadgets': list(Gadget.objects.order_by('?')[:3]),
-    }
 
     # Ambil semua produk
     if category_id:
@@ -45,35 +27,76 @@ def product_list(request, category_id=None):
     if query:
         product_list = [product for product in product_list if query.lower() in product.name.lower()]
 
-    # Pagination dengan 6 produk per halaman
-    paginator = Paginator(product_list, 6)  # 6 produk per halaman
+    # Ambil jumlah produk per halaman dari query string (default: 6)
+    limit = int(request.GET.get('limit', 6))
+
+    # Pengurutan berdasarkan pilihan pengguna
+    sort = request.GET.get('sort')
+    if sort == 'name_asc':
+        product_list = sorted(product_list, key=lambda x: x.name)
+    elif sort == 'name_desc':
+        product_list = sorted(product_list, key=lambda x: x.name, reverse=True)
+    elif sort == 'price_asc':
+        product_list = sorted(product_list, key=lambda x: x.price)
+    elif sort == 'price_desc':
+        product_list = sorted(product_list, key=lambda x: x.price, reverse=True)
+    elif sort == 'rating_desc':
+        product_list = sorted(product_list, key=lambda x: x.rating, reverse=True)
+    elif sort == 'rating_asc':
+        product_list = sorted(product_list, key=lambda x: x.rating)
+    elif sort == 'model_asc':
+        product_list = sorted(product_list, key=lambda x: x.model)
+    elif sort == 'model_desc':
+        product_list = sorted(product_list, key=lambda x: x.model, reverse=True)
+
+    # Pagination dengan jumlah produk per halaman yang disesuaikan
+    paginator = Paginator(product_list, limit)
     page = request.GET.get('page')
 
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
-        # Jika halaman tidak integer, tampilkan halaman pertama
         products = paginator.page(1)
     except EmptyPage:
-        # Jika halaman di luar jangkauan (misalnya, halaman 9999), tampilkan halaman terakhir
         products = paginator.page(paginator.num_pages)
 
+    # Daftar produk teratas secara acak
+    top_products = {
+        'ebooks': list(Ebook.objects.order_by('?')[:3]),
+        'laptops': list(Laptop.objects.order_by('?')[:3]),
+        'gadgets': list(Gadget.objects.order_by('?')[:3]),
+    }
+
+    # Daftar produk terbaru secara acak
+    latest_products = {
+        'ebooks': list(Ebook.objects.order_by('-created_at')[:3]),
+        'laptops': list(Laptop.objects.order_by('-created_at')[:3]),
+        'gadgets': list(Gadget.objects.order_by('-created_at')[:3]),
+    }
+
+    # Daftar produk terkait secara acak (digunakan top_products untuk contoh)
+    related_products = {
+        'ebooks': list(Ebook.objects.order_by('?')[:3]),
+        'laptops': list(Laptop.objects.order_by('?')[:3]),
+        'gadgets': list(Gadget.objects.order_by('?')[:3]),
+    }
+
+    # Kembalikan halaman dengan konteks yang diperlukan
     context = {
         'categories': categories,
         'products': products,
         'query': query,
         'top_products': top_products,
         'latest_products': latest_products,
-        'related_products': top_products,
-
+        'related_products': related_products,
     }
     return render(request, 'products/product_list.html', context)
 
 
 
 
+
 def home(request, category_id=None):
-    query = request.GET.get('q')
     categories = Category.objects.all()
     related_products = {
         'ebooks': list(Ebook.objects.order_by('?')[:12]),
@@ -109,13 +132,10 @@ def home(request, category_id=None):
         gadgets = list(Gadget.objects.all())
         products = ebooks + laptops + gadgets
 
-    if query:
-        products = [product for product in products if query.lower() in product.name.lower()]
-
+    
     context = {
         'categories': categories,
         'products': products,
-        'query': query,
         'latest_products': latest_products,
         'top_products': top_products,
         'related_products': top_products,
