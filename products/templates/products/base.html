@@ -318,21 +318,6 @@
   <script src="https://html.lionode.com/darklook/js/jquery.firstVisitPopup.js"></script>
   <script src="https://html.lionode.com/darklook/js/custom.js"></script>
 	<script src="https://html.lionode.com/darklook/js/jquery-ui.js"></script>
-<script>
-  $(function() {
-    $("#slider-range").slider({
-      range: true,
-      min: 0,
-      max: 500,
-      values: [75, 300],
-      slide: function(event, ui) {
-        $("#amount").val("Rp" + ui.values[0] + " - Rp" + ui.values[1]);
-      }
-    });
-    $("#amount").val("Rp" + $("#slider-range").slider("values", 0) +
-      " - Rp" + $("#slider-range").slider("values", 1));
-  });
-  </script>
 
 
 <script type="text/javascript">
@@ -376,6 +361,45 @@
   }
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Inisialisasi slider
+   $(function() {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 500000,
+                values: [75000, 500000],
+                slide: function(event, ui) {
+                    $("#amount").val("Rp" + numberWithDots(ui.values[0]) + " - Rp" + numberWithDots(ui.values[1]));
+                }
+            });
+            $("#amount").val("Rp" + numberWithDots($("#slider-range").slider("values", 0)) +
+                " - Rp" + numberWithDots($("#slider-range").slider("values", 1)));
+
+            function numberWithDots(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            }
+        });
+  // Event listener untuk tombol Apply Filters
+  document.getElementById('apply-filter-btn').addEventListener('click', function () {
+    var minPrice = $("#slider-range").slider("values", 0);
+    var maxPrice = $("#slider-range").slider("values", 1);
+
+    var categories = [];
+    document.querySelectorAll('#filter-group1 input[type="checkbox"]:checked').forEach(function (checkbox) {
+      categories.push(checkbox.value);
+    });
+
+    var urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('min_price', minPrice);
+    urlParams.set('max_price', maxPrice);
+    urlParams.set('categories', categories.join(','));
+
+    window.location.search = urlParams.toString();
+  });
+});
+</script>
 
 </body>
 </html>

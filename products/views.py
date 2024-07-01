@@ -1,4 +1,3 @@
-# products/views.py
 import random
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Ebook, Laptop, Gadget
@@ -49,6 +48,18 @@ def product_list(request, category_id=None):
     elif sort == 'model_desc':
         product_list = sorted(product_list, key=lambda x: x.model, reverse=True)
 
+    # Parsing filter dari query parameters
+    min_price = float(request.GET.get('min_price', 0))
+    max_price = float(request.GET.get('max_price', 500000))
+    selected_categories = request.GET.get('categories', '').split(',')
+
+    # Filter produk berdasarkan rentang harga
+    product_list = [product for product in product_list if min_price <= product.price <= max_price]
+
+    # Filter produk berdasarkan kategori
+    if selected_categories and '' not in selected_categories:
+        product_list = [product for product in product_list if product.category.name in selected_categories]
+
     # Pagination dengan jumlah produk per halaman yang disesuaikan
     paginator = Paginator(product_list, limit)
     page = request.GET.get('page')
@@ -91,8 +102,6 @@ def product_list(request, category_id=None):
         'related_products': related_products,
     }
     return render(request, 'products/product_list.html', context)
-
-
 
 
 
