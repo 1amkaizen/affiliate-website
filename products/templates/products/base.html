@@ -23,14 +23,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="viewport" content="width=device-width">
   <!-- =====  CSS  ===== -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.css' %}">
 
- <link rel="stylesheet" type="text/css" href="https://html.lionode.com/darklook/css/font-awesome.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://html.lionode.com/darklook/css/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="https://html.lionode.com/darklook/css/style.css">
-  <link rel="stylesheet" type="text/css" href="https://html.lionode.com/darklook/css/magnific-popup.css">
-  <link rel="stylesheet" type="text/css" href="https://html.lionode.com/darklook/css/owl.carousel.css">
-  <link rel="stylesheet" type="text/css" href="https://html.lionode.com/darklook/css/jquery-ui.css">
-  <link rel="shortcut icon" href="https://html.lionode.com/darklook/images/favicon.png">
+   <link rel="shortcut icon" href="https://html.lionode.com/darklook/images/favicon.png">
   <link rel="apple-touch-icon" href="https://html.lionode.com/darklook/images/apple-touch-icon.png">
   <link rel="apple-touch-icon" sizes="72x72" href="https://html.lionode.com/darklook/images/apple-touch-icon-72x72.png">
   <link rel="apple-touch-icon" sizes="114x114" href="https://html.lionode.com/darklook/images/apple-touch-icon-114x114.png">
@@ -59,7 +59,7 @@
             </div>
             <div class="col-xs-12 col-sm-8">
               <ul class="header-top-right text-right">
-                <li class="account"><a href="login.html">My Account</a></li>
+                <li class="account"><a href="{% url 'home' %}">My Account</a></li>
                
               </ul>
             </div>
@@ -311,15 +311,13 @@
     <!-- =====  FOOTER END  ===== -->
   </div>
   <a id="scrollup"></a>
-  <script src="https://html.lionode.com/darklook/js/jQuery_v3.1.1.min.js"></script>
-  <script src="https://html.lionode.com/darklook/js/owl.carousel.min.js"></script>
-  <script src="https://html.lionode.com/darklook/js/bootstrap.min.js"></script>
-  <script src="https://html.lionode.com/darklook/js/jquery.magnific-popup.js"></script>
-  <script src="https://html.lionode.com/darklook/js/jquery.firstVisitPopup.js"></script>
-  <script src="https://html.lionode.com/darklook/js/custom.js"></script>
-	<script src="https://html.lionode.com/darklook/js/jquery-ui.js"></script>
-
-
+  <script src="{% static 'js/jQuery_v3.1.1.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/jquery.firstVisitPopup.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
 <script type="text/javascript">
   document.getElementById('input-limit').onchange = function() {
     var limit = this.value;

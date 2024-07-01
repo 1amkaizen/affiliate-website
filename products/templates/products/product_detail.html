@@ -5,8 +5,8 @@
     <div class="breadcrumb ptb_20">
       <h1>{{ product.name|truncatechars:20 }}</h1>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="category_page.html">Products</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'product_list' %}">Products</a></li>
         <li class="active">{{ product.name|truncatechars:20 }}</li>
       </ul>
     </div>
@@ -201,11 +201,13 @@
         </div>
       </div>
       <div class="col-md-6 prodetail caption product-thumb">
+
+							<span class"text-warning"> {{ product.author }}</span>
+
         <h4 data-name="product_name" class="product-name">
           {{ product.name }}
         </h4>
-        <span> {{ product.author }}</span>
-        <div class="rating">
+               <div class="rating">
           <span class="fa fa-stack"
             ><i class="fa fa-star-o fa-stack-1x"></i
             ><i class="fa fa-star fa-stack-1x"></i
