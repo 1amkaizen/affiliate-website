@@ -188,3 +188,8 @@ def product_detail(request, product_id, product_type):
     }
     return render(request, 'products/product_detail.html', context)
 
+def about(request):
+    return render(request, 'products/about.html')
+
+def contact(request):
+    return render(request, 'products/contact.html')
