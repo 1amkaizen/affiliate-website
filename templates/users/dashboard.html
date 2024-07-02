@@ -1,0 +1,21 @@
+<!-- templates/users/dashboard.html -->
+
+{% extends 'users/base.html' %}
+{% block title %}Dashboard - Affiliate Marketing{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                Dashboard
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Welcome, {{ user.username }}</h5>
+                <p class="card-text">Manage your profile and affiliate products here.</p>
+                <!-- Add more content as needed -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

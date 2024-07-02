@@ -3,11 +3,11 @@
   <!-- =====  BANNER STRAT  ===== -->
   <div class="col-sm-12">
     <div class="breadcrumb ptb_20">
-      <h1>{{ product.name|truncatechars:20 }}</h1>
+      <h1>{{ product.name|truncatechars:15 }}</h1>
       <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'product_list' %}">Products</a></li>
-        <li class="active">{{ product.name|truncatechars:20 }}</li>
+        <li class="active">{{ product.name|truncatechars:15 }}</li>
       </ul>
     </div>
   </div>
@@ -202,7 +202,7 @@
       </div>
       <div class="col-md-6 prodetail caption product-thumb">
 
-							<span class"text-warning"> {{ product.author }}</span>
+							<span class"text-warning">Penulis: {{ product.author }}</span>
 
         <h4 data-name="product_name" class="product-name">
           {{ product.name }}
@@ -235,36 +235,37 @@
         <hr />
         <ul class="list-unstyled product_info mtb_20">
           {% if product.isbn %}
+
           <li>
             <label>ISBN:</label>
             <span> {{ product.isbn }}</span>
           </li>
           <li>
-            <label>Pages:</label>
+            <label>Halaman:</label>
             <span> {{ product.pages }}</span>
           </li>
           <li>
-            <label>Publisher:</label>
+            <label>Penerbit:</label>
             <span> {{ product.publisher }}</span>
           </li>
           <li>
-            <label>Publication Date:</label>
+            <label>Tanggal Terbit:</label>
             <span> {{ product.publication_date }}</span>
           </li>
           <li>
-            <label>Language:</label>
+            <label>Bahasa:</label>
             <span> {{ product.language }}</span>
           </li>
           <li>
-            <label>Weight:</label>
+            <label>Berat:</label>
             <span> {{ product.weight }} kg</span>
           </li>
           <li>
-            <label>Width:</label>
+            <label>Lebar:</label>
             <span> {{ product.width }} cm</span>
           </li>
           <li>
-            <label>Length:</label>
+            <label>Panjang:</label>
             <span> {{ product.length }} cm</span>
           </li>
           {% elif product.processor %}
@@ -293,7 +294,7 @@
         </ul>
         <hr />
         <p style="white-space: pre-line">
-          {{ product.description|safe|truncatewords_html:30 }}
+          {{ product.description|safe|truncatewords_html:20 }}
         </p>
                 <div id="product">
           <div class="button-group mt_30">
@@ -323,10 +324,12 @@
             <p id="description" style="white-space: pre-line">
           {{ product.description|safe|truncatewords_html:50 }}
         </p>
-        <a id="readMoreBtn" ><i class="fa fa-link"></i>Read More</a>
-        <a id="readLessBtn"  style="display: none">
-         <i class="fa fa-link"></i> Read Less
-        </a>
+        <div class="read-more ">
+<a id="readMoreBtn" ><i class="fa fa-link"></i>Read More</a>
+<a id="readLessBtn" style="display: none"><i class="fa fa-link"></i> Read Less</a>
+ </div>
+
+
 
         <script>
           var fullDescription = `{{ product.description|safe }}`;
@@ -466,29 +469,7 @@
                   <h6 data-name="product_name" class="product-name mt_20">
                     {{ related_product.name }}
                   </h6>
-                  <div class="rating">
-                    <span class="fa fa-stack"
-                      ><i class="fa fa-star-o fa-stack-1x"></i
-                      ><i class="fa fa-star fa-stack-1x"></i
-                    ></span>
-                    <span class="fa fa-stack"
-                      ><i class="fa fa-star-o fa-stack-1x"></i
-                      ><i class="fa fa-star fa-stack-1x"></i
-                    ></span>
-                    <span class="fa fa-stack"
-                      ><i class="fa fa-star-o fa-stack-1x"></i
-                      ><i class="fa fa-star fa-stack-1x"></i
-                    ></span>
-                    <span class="fa fa-stack"
-                      ><i class="fa fa-star-o fa-stack-1x"></i
-                      ><i class="fa fa-star fa-stack-1x"></i
-                    ></span>
-                    <span class="fa fa-stack"
-                      ><i class="fa fa-star-o fa-stack-1x"></i
-                      ><i class="fa fa-star fa-stack-1x"></i
-                    ></span>
-                  </div>
-                  <span class="price"
+                                    <span class="price"
                     ><span class="amount"
                       >{{related_product.price|format_rupiah }}</span
                     >
