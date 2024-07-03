@@ -16,25 +16,30 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# settings.py
+ASSETS_ROOT = '/static/assets'
+
 # affiliate_project/settings.py
  # Redirect setelah logout berhasil
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 # settings.py
+LOGIN_URL = 'login'  # Sesuaikan dengan URL login yang sesuai
+LOGIN_REDIRECT_URL = '/users/dashboard/'  # Sesuaikan dengan URL dashboard yang sesuai
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-lr)&!)dayy$u7&q1r-qsl$3%d@zxb5ior*9*r08n1b7g3@vxg@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
-    #'users', 
+    'users', 
     'products',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,7 +64,7 @@ ROOT_URLCONF = 'affiliate_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,  'templates')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,9 +131,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # Additional locations of static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'products/static'),
+    BASE_DIR / "static",
+    BASE_DIR / "products/static",
+    BASE_DIR / "users/static",
 ]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

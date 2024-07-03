@@ -1,0 +1,80 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block stylesheets %}
+    <!-- Specific Page CSS goes HERE -->
+    <style>
+        /* Tambahkan CSS khusus halaman jika diperlukan */
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <div class="row pt-5">
+                <div class="col-md-6 mt-5 offset-md-3 pt-5 mt-5">
+                    <div class="card">
+                        <div class="card-header text-center py-4">
+                            <h4 class="title">Sign Up</h4>
+                        </div>
+                        <div class="card-body px-5 py-3">
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    {% for field, errors in form.errors.items %}
+                                        <strong>{{ field }}</strong>
+                                        {% for error in errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <form method="post" id="register-form">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-12 px-md-1">
+                                        <div class="form-group">
+                                            <label>Username</label>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 px-md-1">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            {{ form.email }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 px-md-1">
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            {{ form.password1 }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 px-md-1">
+                                        <div class="form-group">
+                                            <label>Confirm Password</label>
+                                            {{ form.password2 }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-fill btn-primary" form="register-form">Register</button>
+                            <br /><br />
+                            <p>Already have an account? <a href="{% url 'login' %}" class="text-primary">Login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <!-- Specific Page JS goes HERE -->
+    <script>
+        // Tambahkan script JS khusus halaman jika diperlukan
+    </script>
+{% endblock javascripts %}
+

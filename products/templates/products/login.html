@@ -1,0 +1,104 @@
+{% extends 'products/base.html' %} {% load custom_filters %} {% block title%}DarkLook{% endblock %}
+<div class="row ">
+  <div id="column-left" class="col-sm-4 col-lg-3 hidden-xs">
+    <div id="category-menu" class="navbar collapse in mb_40" aria-expanded="true" style="" role="button">
+      <div class="nav-responsive">
+        <div class="heading-part">
+          <h2 class="main_title">Top category</h2>
+        </div>
+        <ul class="nav  main-navigation collapse in">
+          <li><a href="#">Appliances</a></li>
+          <li><a href="#">Mobile Phones</a></li>
+          <li><a href="#">Tablet PC &amp; Accessories</a></li>
+          <li><a href="#">Consumer Electronics</a></li>
+          <li><a href="#">Computers &amp; Networking</a></li>
+          <li><a href="#">Electrical &amp; Tools</a></li>
+          <li><a href="#">Apparel</a></li>
+          <li><a href="#">Bags &amp; Shoes</a></li>
+          <li><a href="#">Toys &amp; Hobbies</a></li>
+          <li><a href="#">Watches &amp; Jewelry</a></li>
+          <li><a href="#">Home &amp; Garden</a></li>
+          <li><a href="#">Health &amp; Beauty</a></li>
+          <li><a href="#">Outdoors &amp; Sports</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="left_banner left-sidebar-widget mt_30 mb_40"> <a href="#"><img src="https://html.lionode.com/darklook/images/left1.jpg" alt="Left Banner" class="img-responsive"></a> </div>
+  </div>
+  <div class="col-sm-8 col-lg-9 mtb_20">
+    <!-- contact  -->
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel-login panel">
+          <div class="panel-heading">
+            <div class="row mb_20">
+              <div class="col-xs-6">
+                <a href="#" class="active" id="login-form-link">Login</a>
+              </div>
+              <div class="col-xs-6">
+                <a href="#" id="register-form-link" class="">Register</a>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <form id="login-form" action="#" method="post" style="">
+                  <div class="form-group">
+                    <input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder="Username" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                  </div>
+                  <div class="form-group text-center">
+                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                    <label for="remember"> Remember Me</label>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="text-center">
+                          <a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <form id="register-form" action="#" method="post" style="display: none;">
+                  <div class="form-group">
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" id="password2" tabindex="2" class="form-control" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

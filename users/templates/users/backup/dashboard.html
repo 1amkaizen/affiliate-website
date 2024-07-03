@@ -1,0 +1,100 @@
+<!-- templates/users/dashboard.html -->
+
+{% extends 'users/base.html' %}
+{% block title %}Dashboard - Affiliate Marketing{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                Dashboard
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Welcome, {{ user.username }}</h5>
+                <p class="card-text">Manage your profile and affiliate products here.</p>
+                
+                <!-- Button to toggle add product form -->
+                <button id="toggleAddProductForm" class="btn btn-primary mb-3">Add Product</button>
+                
+                <!-- Form to add a product, initially hidden -->
+                <div id="addProductForm" style="display: none;">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success">Add Product</button>
+                    </form>
+                </div>
+
+                <!-- Display user products -->
+                <h5 class="mt-4">Your Products</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in user_products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.category.name }}</td>
+                            <td>
+                                <!-- Edit button -->
+                                <button class="btn btn-sm btn-warning edit-product" data-id="{{ product.id }}">Edit</button>
+                                
+                                <!-- Delete form -->
+                                <form method="post" action="{% url 'delete_product' product.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {% if form.errors %}
+                <div class="alert alert-danger mt-3">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('toggleAddProductForm').addEventListener('click', function() {
+    var form = document.getElementById('addProductForm');
+    if (form.style.display === 'none') {
+        form.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+    }
+});
+</script>
+
+<script>
+document.querySelectorAll('.edit-product').forEach(button => {
+    button.addEventListener('click', function() {
+        var productId = this.dataset.id;  // Ambil ID produk dari data atribut
+        var editProductUrl = "{% url 'edit_product' 0 %}".replace('0', productId);  // Ganti placeholder dengan ID produk
+        window.location.href = editProductUrl;
+    });
+});
+</script>
+
+{% endblock %}
+
