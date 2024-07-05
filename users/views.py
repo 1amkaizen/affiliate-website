@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from .forms import UserRegistrationForm, UserLoginForm, UserProductForm,EditProfileForm,EditUserProfileForm
 from .models import UserProduct,UserProfile
+from django.contrib import messages
 
 def register(request):
     if request.method == 'POST':
@@ -41,7 +42,10 @@ def user_login(request):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
+                messages.success(request, 'Login successful.')
                 return redirect('dashboard')
+            else:
+                messages.error(request, 'Invalid username or password.')
     else:
         form = UserLoginForm()
     
@@ -50,6 +54,7 @@ def user_login(request):
         'form': form,
     }
     return render(request, 'home/login.html', context)
+
 
 def user_logout(request):
     logout(request)

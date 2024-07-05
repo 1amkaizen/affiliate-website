@@ -48,6 +48,12 @@ class UserProductForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['category'].queryset = Category.objects.all()
 
+
+
+
+
+
+
 class EditProfileForm(UserChangeForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=100)
