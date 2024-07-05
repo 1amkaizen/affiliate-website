@@ -17,7 +17,7 @@
         </a>
       </li>
       <li class="{% if 'icons' in segment %} active {% endif %}">
-							<a href="" id="toggleAddProductForm">
+							<a href="{% url 'add_product' %}" >
           <i class="tim-icons icon-simple-add"></i>
           <p>Add Product</p>
         </a>
@@ -35,7 +35,7 @@
         </a>
       </li>
       <li class="{% if 'user' in segment %} active {% endif %}">
-							<a href="{% url 'edit_profile' %}">
+							<a href="{% url 'user_profile' %}">
           <i class="tim-icons icon-single-02"></i>
           <p>User Profile</p>
         </a>

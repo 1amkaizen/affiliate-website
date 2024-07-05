@@ -55,8 +55,12 @@
                         <li class="dropdown nav-item">
                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                 <div class="photo">
-                                    <img src="{{ ASSETS_ROOT }}/img/anime3.png" alt="Profile Photo">
-                                </div>
+                                {% if profile_form.foto_profile.value %}
+                        <img src="{{ profile_form.foto_profile.value.url }}" class="img-fluid rounded mt-2" id="currentProfilePicture" alt="Profile Photo">
+                    {% else %}
+                        <img src="/static/assets/img/anime3.png" class="img-fluid rounded mt-2" id="currentProfilePicture" alt="Current Profile Picture">
+                    {% endif %}    
+																</div>
                                 <b class="caret d-none d-lg-block d-xl-block"></b>
                                 <p class="d-lg-none">
                                     Log out
@@ -64,11 +68,11 @@
                             </a>
                             <ul class="dropdown-menu dropdown-navbar">
                                 <li class="nav-link">
-                                    <a href="/user.html" class="nav-item dropdown-item">Profile</a>
+																				<a href="{% url 'user_profile' %}" class="nav-item dropdown-item">Profile</a>
                                 </li>
                                 <li class="dropdown-divider"></li>
                                 <li class="nav-link">
-                                    <a href="{% url 'login' %}" 
+                                    <a href="{% url 'logout' %}" 
                                        class="nav-item dropdown-item">Logout</a>
                                 </li>
                             </ul>

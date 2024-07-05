@@ -12,257 +12,62 @@
       <div class="col-md-12">
         <div class="card ">
           <div class="card-header">
-            <h4 class="card-title"> Simple Table</h4>
+            <h4 class="card-title"> Add Product</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table tablesorter " id="">
-                <thead class=" text-primary">
-                  <tr>
-                    <th>
-                      Name
-                    </th>
-                    <th>
-                      Country
-                    </th>
-                    <th>
-                      City
-                    </th>
-                    <th class="text-center">
-                      Salary
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      Dakota Rice
-                    </td>
-                    <td>
-                      Niger
-                    </td>
-                    <td>
-                      Oud-Turnhout
-                    </td>
-                    <td class="text-center">
-                      $36,738
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Minerva Hooper
-                    </td>
-                    <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-center">
-                      $23,789
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sage Rodriguez
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-center">
-                      $56,142
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Philip Chaney
-                    </td>
-                    <td>
-                      Korea, South
-                    </td>
-                    <td>
-                      Overland Park
-                    </td>
-                    <td class="text-center">
-                      $38,735
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Doris Greene
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-center">
-                      $63,542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Mason Porter
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-center">
-                      $78,615
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Jon Porter
-                    </td>
-                    <td>
-                      Portugal
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-center">
-                      $98,615
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                						</div>
           </div>
         </div>
       </div>
       <div class="col-md-12">
         <div class="card  card-plain">
           <div class="card-header">
-            <h4 class="card-title"> Table on Plain Background</h4>
-            <p class="category"> Here is a subtitle for this table</p>
-          </div>
+            <h4 class="card-title"> Your Product</h4>
+                      </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table tablesorter " id="">
                 <thead class=" text-primary">
-                  <tr>
-                    <th>
-                      Name
-                    </th>
-                    <th>
-                      Country
-                    </th>
-                    <th>
-                      City
-                    </th>
-                    <th class="text-center">
-                      Salary
-                    </th>
-                  </tr>
-                </thead>
+                <tr>
+                
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+								<th scope="col">Affiliate Link</th>
+                <th scope="col">Actions</th>
+            </tr> 
+								</thead>
                 <tbody>
-                  <tr>
+                {% for product in user_products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.category.name }}</td>
+										<td>{{ product.affiliate_link }}</td>
+
                     <td>
-                      Dakota Rice
+                        <!-- Edit button -->
+                        <button class="btn btn-link btn-warning  edit-product" data-id="{{ product.id }}"><i class="tim-icons icon-pencil"></i></button>
+                        
+                        <!-- Delete form -->
+                        <form method="post" action="{% url 'delete_product' product.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link btn-danger"><i class="tim-icons icon-trash-simple"></i></button>
+                        </form>
                     </td>
-                    <td>
-                      Niger
-                    </td>
-                    <td>
-                      Oud-Turnhout
-                    </td>
-                    <td class="text-center">
-                      $36,738
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Minerva Hooper
-                    </td>
-                    <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-center">
-                      $23,789
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sage Rodriguez
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-center">
-                      $56,142
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Philip Chaney
-                    </td>
-                    <td>
-                      Korea, South
-                    </td>
-                    <td>
-                      Overland Park
-                    </td>
-                    <td class="text-center">
-                      $38,735
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Doris Greene
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-center">
-                      $63,542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Mason Porter
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-center">
-                      $78,615
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Jon Porter
-                    </td>
-                    <td>
-                      Portugal
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-center">
-                      $98,615
-                    </td>
-                  </tr>
-                </tbody>
+                </tr>
+                {% endfor %}
+
+								</tbody>
               </table>
             </div>
           </div>
@@ -274,4 +79,17 @@
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+
+
+
+<script>
+document.querySelectorAll('.edit-product').forEach(button => {
+    button.addEventListener('click', function() {
+        var productId = this.dataset.id;  // Ambil ID produk dari data atribut
+        var editProductUrl = "{% url 'edit_product' 0 %}".replace('0', productId);  // Ganti placeholder dengan ID produk
+        window.location.href = editProductUrl;
+    });
+});
+</script>
+{% endblock javascripts %}

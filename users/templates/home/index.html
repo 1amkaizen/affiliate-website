@@ -98,7 +98,7 @@
                 <div class="card card-tasks">
                     <div class="card-header ">
                         <h6 class="title d-inline">Tasks(5)</h6>
-                        
+                        <p class="card-category d-inline">today</p>
                         <div class="dropdown">
                             <button type="button" class="btn btn-link dropdown-toggle btn-icon"
                                     data-toggle="dropdown">
@@ -112,15 +112,150 @@
                         </div>
                     </div>
                     <div class="card-body ">
-                                                 <!-- Form to add a product, initially hidden -->
-                <div id="addProductForm" >
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-success">Add Product</button>
-                    </form>
-                </div>  
-												                    </div>
+                        <div class="table-full-width table-responsive">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Update the Documentation</p>
+                                        <p class="text-muted">Dwuamish Head, Seattle, WA 8:47 AM</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" checked="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">GDPR Compliance</p>
+                                        <p class="text-muted">The GDPR is a regulation that requires businesses to
+                                            protect the personal data and privacy of Europe citizens for
+                                            transactions that occur within EU member states.</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Solve the issues</p>
+                                        <p class="text-muted">Fifty percent of all respondents said they would be
+                                            more likely to shop at a company </p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Release v2.0.0</p>
+                                        <p class="text-muted">Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Export the processed files</p>
+                                        <p class="text-muted">The report also shows that consumers will not easily
+                                            forgive a company once a breach exposing their personal data
+                                            occurs. </p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Arival at export process</p>
+                                        <p class="text-muted">Capitol Hill, Seattle, WA 12:34 AM</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
@@ -133,66 +268,127 @@
                             <table class="table tablesorter " id="">
                                 <thead class=" text-primary">
                                 <tr>
-                                <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Actions</th>
-   
-																</tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Country
+                                    </th>
+                                    <th>
+                                        City
+                                    </th>
+                                    <th class="text-center">
+                                        Salary
+                                    </th>
+                                </tr>
                                 </thead>
-                            <tbody>
-                        {% for product in user_products %}
-                        <tr>
-                            <td>{{ product.name }}</td>
-                            <td>{{ product.description }}</td>
-                            <td>{{ product.price }}</td>
-                            <td>{{ product.category.name }}</td>
-                            <td  class="td-actions text-right">
-                                <!-- Edit button -->
-                                <button class="btn btn-sm  edit-product" data-id="{{ product.id }}">
-																				<i class="tim-icons icon-pencil"></i>
-																</button>
-                                
-                                <!-- Delete form -->
-                                <form method="post" action="{% url 'delete_product' product.id %}" style="display:inline;">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-sm btn-danger">
-																						<i class="tim-icons icon-trash-simple"></i>
-																		</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-    
-														</table>
-														{% if form.errors %}
-                <div class="alert alert-danger mt-3">
-                    <ul>
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        Dakota Rice
+                                    </td>
+                                    <td>
+                                        Niger
+                                    </td>
+                                    <td>
+                                        Oud-Turnhout
+                                    </td>
+                                    <td class="text-center">
+                                        $36,738
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Minerva Hooper
+                                    </td>
+                                    <td>
+                                        Curaçao
+                                    </td>
+                                    <td>
+                                        Sinaai-Waas
+                                    </td>
+                                    <td class="text-center">
+                                        $23,789
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Sage Rodriguez
+                                    </td>
+                                    <td>
+                                        Netherlands
+                                    </td>
+                                    <td>
+                                        Baileux
+                                    </td>
+                                    <td class="text-center">
+                                        $56,142
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Philip Chaney
+                                    </td>
+                                    <td>
+                                        Korea, South
+                                    </td>
+                                    <td>
+                                        Overland Park
+                                    </td>
+                                    <td class="text-center">
+                                        $38,735
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Doris Greene
+                                    </td>
+                                    <td>
+                                        Malawi
+                                    </td>
+                                    <td>
+                                        Feldkirchen in Kärnten
+                                    </td>
+                                    <td class="text-center">
+                                        $63,542
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Mason Porter
+                                    </td>
+                                    <td>
+                                        Chile
+                                    </td>
+                                    <td>
+                                        Gloucester
+                                    </td>
+                                    <td class="text-center">
+                                        $78,615
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Jon Porter
+                                    </td>
+                                    <td>
+                                        Portugal
+                                    </td>
+                                    <td>
+                                        Gloucester
+                                    </td>
+                                    <td class="text-center">
+                                        $98,615
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
- <!-- Form to add a product, initially hidden -->
-                <div id="addProductForm" style="display: none;">
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-success">Add Product</button>
-                    </form>
-                </div>
 
 {% endblock content %}
 
@@ -206,25 +402,6 @@
 
     });
 </script>
-<script>
-document.getElementById('toggleAddProductForm').addEventListener('click', function() {
-    var form = document.getElementById('addProductForm');
-    if (form.style.display === 'none') {
-        form.style.display = 'block';
-    } else {
-        form.style.display = 'none';
-    }
-});
-</script>
-
-<script>
-document.querySelectorAll('.edit-product').forEach(button => {
-    button.addEventListener('click', function() {
-        var productId = this.dataset.id;  // Ambil ID produk dari data atribut
-        var editProductUrl = "{% url 'edit_product' 0 %}".replace('0', productId);  // Ganti placeholder dengan ID produk
-        window.location.href = editProductUrl;
-    });
-});
-</script>
 
 {% endblock javascripts %}
+
